@@ -1,0 +1,39 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <p-toast></p-toast>
+            <h4>CREATE NEW MEASURES</h4>
+            <p-steps [model]="items" [readonly]="false"></p-steps>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <h5>SHOOSE YOUR DATAS</h5>
+            
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="state">CHOOSE LOCATION</label>
+                    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [showClear]="true" placeholder="Select a City"></p-dropdown>
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="state">CATEGORY</label>
+                    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [showClear]="true" placeholder="Select a City"></p-dropdown>
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="state">DURATION IMPACT</label>
+                    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [showClear]="true" placeholder="Select a City"></p-dropdown>
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="state">COST DRIVER</label>
+                    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [showClear]="true" placeholder="Select a City"></p-dropdown>
+                </div>
+
+            </div>
+            <div class="flex justify-content-center flex-wrap">
+                <button pButton pRipple label="NEXT" icon="pi pi-angle-double-right" iconPos="right" routerLink="/buyer/measure-detail"></button>
+            </div>
+
+        </div>
+    </div>
+</div>
+

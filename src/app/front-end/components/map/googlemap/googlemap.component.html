@@ -1,0 +1,28 @@
+
+<!-- google-maps-demo.component.html -->
+<div class="flex justify-center card p-4 ...">
+  <div class="w-full">
+
+    <!-- <google-map
+      height="850px"
+      width="1200px"
+      [options]="mapOptions"
+      (mapClick)="moveMap($event)"
+      (mapMousemove)="move($event)">
+
+      <map-marker [position]="marker.position"></map-marker>
+    </google-map> -->
+
+    <google-map height="850px" width="1200px" [center]="center" [zoom]="zoom">
+      <!-- <map-marker [position]="currentPositionMarker?.position" [title]="currentPositionMarker?.title">      </map-marker> -->
+
+      <map-marker #marker="mapMarker" *ngFor="let marker of currentPositionMarker" [position]="marker.position" [title]="marker.title" (mapClick)="openInfoWindow(marker.title)"></map-marker>
+      <map-info-window>{{currentPositionMarker.title}}</map-info-window>
+    </google-map>
+
+  </div>
+
+</div>
+
+<div>Latitude: {{display?.lat}}</div>
+<div>Longitude: {{display?.lng}}</div>

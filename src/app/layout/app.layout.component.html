@@ -1,0 +1,15 @@
+<div class="layout-wrapper" [ngClass]="containerClass">
+    <app-topbar></app-topbar>
+    <div class="layout-sidebar border-noround rounded-none bg-white-alpha-10 shadow-7 -ml-5 -mt-5 -mb-5 h-full">
+        <app-sidebar></app-sidebar>
+        
+    </div>
+    <div class="layout-main-container">
+        <div class="layout-main">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+    <app-config></app-config>
+    <div class="layout-mask"></div>
+</div>

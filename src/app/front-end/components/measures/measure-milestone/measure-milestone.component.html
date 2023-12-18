@@ -1,0 +1,121 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h5>YOUR MILESTONE</h5>          
+
+
+            <div class="col-12">
+                <!-- <div class="card"> -->
+                    <!-- <h5>MEASURE DATAS</h5> -->
+                    <p-table #dt1 [value]="customers1" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll">
+                        <ng-template pTemplate="caption">
+                            <div class="flex justify-content-between flex-column sm:flex-row">
+                                <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                                <span class="p-input-icon-left mb-2">
+                                    <i class="pi pi-search"></i>
+                                    <input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Search Keyword" class="w-full"/>
+                                </span>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="min-width: 12rem">
+                                    <div class="flex justify-content-between align-items-center">
+                                        MILESTONE/TO DO
+                                        <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+                                    </div>
+                                </th>
+                              
+                             
+                                <th style="min-width: 10rem">
+                                    <div class="flex justify-content-between align-items-center">
+                                        PERSONSIBLE
+                                        <p-columnFilter type="date" field="date" display="menu" placeholder="mm/dd/yyyy"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th style="min-width: 10rem">
+                                    <div class="flex justify-content-between align-items-center">
+                                        DI
+                                        <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th style="min-width: 12rem">
+                                    <div class="flex justify-content-between align-items-center">
+                                        DUE DATE
+                                        <p-columnFilter field="status" matchMode="equals" display="menu">
+                                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                                <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)" placeholder="Any" [style]="{'min-width': '12rem'}" >
+                                                    <ng-template let-option pTemplate="item">
+                                                        <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                                                    </ng-template>
+                                                </p-dropdown>
+                                            </ng-template>
+                                        </p-columnFilter>
+                                    </div>
+                                </th>
+                               
+                                <th style="min-width: 8rem">
+                                    <div class="flex justify-content-between align-items-center">
+                                        COMPLETION
+                                        <p-columnFilter type="boolean" field="verified" display="menu"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th style="min-width: 8rem">
+                                    <div class="flex justify-content-between align-items-center">
+                                        COMPLETION DATE
+                                        <p-columnFilter type="boolean" field="verified" display="menu"></p-columnFilter>
+                                    </div>
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-customer>
+                            <tr>
+                                <td>
+                                    {{customer.name}}
+                                </td>
+                               
+                                <td>
+                                    {{customer.id}}
+                                </td>
+                                <td>
+                                    {{customer.balance | currency:'USD':'symbol'}}
+                                </td>
+                                <td>
+                                    {{customer.balance | currency:'USD':'symbol'}}
+                                </td>
+                                
+                                <td class="text-center">
+                                    {{customer.date | date: 'MM/dd/yyyy'}}
+                                </td>
+                                <td class="text-center">
+                                    {{customer.date | date: 'MM/dd/yyyy'}}
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="8">No customers found.</td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="loadingbody">
+                            <tr>
+                                <td colspan="8">Loading customers data. Please wait.</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                <!-- </div> -->
+        
+            </div>
+            <div class="flex justify-content-start flex-wrap gap-4 mb-8">   
+                <p-button label="ADD MILESTONE" icon="pi pi-calendar-plus" size="small" styleClass="p-button-success p-button-sm" ></p-button>
+                <p-button label="DELETE MILESTONE" icon="pi pi-trash" size="small" styleClass="p-button-warning p-button-sm" ></p-button>
+            </div>
+
+            <div class="flex justify-content-center flex-wrap gap-4">
+                <button pButton pRipple label="BACK" icon="pi pi-angle-double-left" iconPos="left" routerLink="/measures/measure-detail"></button>
+                <button pButton pRipple label="FINISH" icon="pi pi-angle-double-right" iconPos="right" routerLink="/measures/measure-milestone"></button>
+            </div>
+
+        </div>
+    </div>
+</div>
